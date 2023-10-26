@@ -4,12 +4,10 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
-// console.log(contactsPath);
 
 async function readContactsList() {
   try {
     const data = await fs.readFile(contactsPath, { encoding: "UTF-8" });
-    // console.log(data);
     return JSON.parse(data);
   } catch (error) {
     throw new Error(error.message);
