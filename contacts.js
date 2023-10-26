@@ -47,12 +47,10 @@ async function removeContact(contactId) {
     if (index === -1) {
       return null;
     }
-    const newContacts = [
-      ...contacts.slice(0, index),
-      contacts.slice(index + 1),
-    ];
-    await writeContactsList(newContacts);
-    return contacts[index];
+
+    const [result] = contacts.splice(index, 1);
+    await writeContactsList(contacts);
+    return result;
   } catch (error) {
     throw error;
   }
